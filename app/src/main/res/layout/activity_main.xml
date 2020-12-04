@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/user"
+        android:layout_marginTop="200dp"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/user"
+        android:id="@+id/signout"
+        android:visibility="invisible"
+        android:text="Sign out"
+        android:onClick="signout"
+        android:layout_margin="8dp"
+        android:layout_centerHorizontal="true"
+        />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/signout"
+        android:layout_margin="8dp"
+        android:text="College Login"
+        android:id="@+id/collegeLogin"
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/collegeLogin"
+        android:layout_margin="8dp"
+        android:id="@+id/adminLogin"
+        android:text="Admin Login"
+        />
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Public view"
+        android:id="@+id/publicView"
+        android:layout_below="@+id/adminLogin"
+        android:layout_margin="8dp"
+        />
+
+</RelativeLayout>

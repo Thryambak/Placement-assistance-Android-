@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:id="@+id/Company"
+        android:autofillHints="Company name"
+        android:layout_centerHorizontal="true"/>
+
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_below="@+id/Company"
+
+        android:hint="Enter Company name"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:id="@+id/companyName"/>
+
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:gravity="center"
+
+        android:layout_below="@+id/companyName"
+        android:hint="Enter Company Tier                                                                "
+        android:visibility="invisible"
+
+
+        android:id="@+id/companyTier"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_below="@+id/companyTier"
+        android:hint="Round"
+        android:gravity="center"
+        android:id="@+id/round"/>
+
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/branch"
+        android:layout_margin="8dp"
+        android:layout_below="@+id/round"
+        android:autofillHints="Branch"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_below="@+id/branch"
+        android:id="@+id/topic"
+        android:gravity="center"
+        android:hint="Topic"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_below="@+id/topic"
+        android:id="@+id/descreption"
+        android:gravity="center"
+        android:hint="Question"/>
+
+    <Button
+        android:id="@+id/questionSubmit"
+        android:layout_width="174dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/descreption"
+      android:layout_margin="8dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="8dp"
+        android:text="Submit" />
+
+
+</RelativeLayout>
