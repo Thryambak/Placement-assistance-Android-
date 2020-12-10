@@ -14,6 +14,7 @@ import android.widget.Toast;
 import org.w3c.dom.Text;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.myViewHolder>{
@@ -31,6 +32,8 @@ CollegeInfo collegeInfo;
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.collegerow,parent,false);
         Toast.makeText(parent.getContext(), "Here", Toast.LENGTH_SHORT).show();
         return new myViewHolder(view);
+
+
     }
 
     @Override
@@ -53,6 +56,17 @@ CollegeInfo collegeInfo;
             holder.relativeLayout.setBackgroundColor(Color.parseColor("#D39C9C"));
 
         Log.i("No  of placed to be displayed",Integer.toString(collegeInfo.getBranches()[position].getPlaced().length));
+        if(collegeInfo.getBranches()[position].getPlaced().length==0){
+            holder.parentNoPlaced.setVisibility(View.GONE);
+            holder.parentYear.setVisibility(View.GONE);
+            holder.recyclerView.setVisibility(View.GONE);
+        }
+        else{
+            holder.recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            RinRAdapter rAdapter = new RinRAdapter(context,collegeInfo.getBranches()[position].getPlaced());
+            holder.recyclerView.setAdapter(rAdapter);
+        }
+
     }
 
     @Override
@@ -62,8 +76,10 @@ CollegeInfo collegeInfo;
 
     public class myViewHolder extends RecyclerView.ViewHolder{
 
-        TextView branchName,circuit,avgPkg;
+        TextView branchName,circuit,avgPkg,parentYear,parentNoPlaced;
         RelativeLayout relativeLayout;
+        RecyclerView recyclerView;
+
 
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -71,6 +87,9 @@ CollegeInfo collegeInfo;
             branchName=itemView.findViewById(R.id.BranchName1);
             circuit = itemView.findViewById(R.id.Circuit1);
             avgPkg=itemView.findViewById(R.id.Avgpkg1);
+            recyclerView=itemView.findViewById(R.id.RinR);
+            parentYear = itemView.findViewById(R.id.parentYear);
+            parentNoPlaced= itemView.findViewById(R.id.parentNoPlaced);
         }
     }
 }

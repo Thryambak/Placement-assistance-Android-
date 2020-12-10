@@ -9,19 +9,29 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+     android:layout_above="@+id/addQuestion"
+        android:layout_centerHorizontal="true"
         android:text="Add Branch"
         android:layout_margin="8dp"
         android:id="@+id/branchAdd"/>
 
     <Button
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+    android:text="Add Questions"
+    android:layout_margin="8dp"
+
+    android:layout_centerHorizontal="true"
+    android:id="@+id/addQuestion"
+    />
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Questions"
+        android:text="Add new Visit"
         android:layout_margin="8dp"
-        android:layout_below="@+id/branchAdd"
+        android:layout_below="@+id/addQuestion"
         android:layout_centerHorizontal="true"
-        android:id="@+id/addQuestion"
+        android:id="@+id/addVisit"
         />
-
 </RelativeLayout>
