@@ -14,6 +14,7 @@ import android.media.effect.Effect;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -35,11 +36,14 @@ public class CollegeActivity extends AppCompatActivity {
     int ItemSelected = 0;
     private  String Company="";
     boolean isCompanyNeeded = false;
+   private int companySelected;
+    private int branchSelected;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_college);
+        Button addVisit = findViewById(R.id.addVisit);
         Button addClgButton = findViewById(R.id.branchAdd);
         retrofit = new Retrofit.Builder()
                 .baseUrl(BaseURL)
@@ -58,6 +62,12 @@ public class CollegeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 addQuestion();
+            }
+        });
+        addVisit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addVisitFunc();
             }
         });
     }
@@ -228,6 +238,79 @@ public class CollegeActivity extends AppCompatActivity {
 
     }
 
+    public void addVisitFunc(){
+
+        View myView= getLayoutInflater().inflate(R.layout.addvisit,null);
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setView(myView);
+        AlertDialog alert = builder.create();
+        alert.show();
+        final Button submit= myView.findViewById(R.id.buttonAddVisit);
+        final EditText year= myView.findViewById(R.id.year);
+        final EditText noSel = myView.findViewById(R.id.noSelected);
+        final EditText avgpkg = myView.findViewById(R.id.avgpkg);
+        final Spinner spinner = myView.findViewById(R.id.CompanySpinner);
+        final Spinner branchSpinner= myView.findViewById(R.id.BranchSpinner);
+        final ArrayList<String> company = SetSpinnerCompany(spinner);
+        final ArrayList<String> branches = SetSpinnnerBranch(branchSpinner);
+
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                companySelected = position;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                companySelected=0;
+            }
+        });
+
+        branchSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                branchSelected=position;
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                branchSelected=0;
+            }
+        });
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                HashMap<String,String> map = new HashMap<String, String>();
+                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                final String token = sharedPreferences.getString("Token", "");
+                map.put("token", token);
+                Log.i("TOKENS ARE",token);
+                map.put("company",company.get(companySelected));
+                map.put("branch",branches.get(branchSelected));
+                map.put("averagePackage",avgpkg.getText().toString());
+                map.put("year",year.getText().toString());
+                map.put("numberOfSelected",noSel.getText().toString());
+                Call<Void> myCall= retrofitInterface.addVisit(map);
+                myCall.enqueue(new Callback<Void>() {
+                    @Override
+                    public void onResponse(Call<Void> call, Response<Void> response) {
+                        if(response.code()==200){
+                            Toast.makeText(CollegeActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                        }
+                        else if(response.code()==400)Toast.makeText(CollegeActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        Toast.makeText(CollegeActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
+
+
+    }
 
     public void createNewQuestion(final View myView, final String companyName, final AlertDialog alertDialog) {
         final Spinner spinner = myView.findViewById(R.id.branch);
@@ -375,4 +458,78 @@ public class CollegeActivity extends AppCompatActivity {
 
 
     }
+
+
+    public ArrayList<String> SetSpinnerCompany(final Spinner spinner){
+        HashMap<String, String> map = new HashMap<String, String>();
+        final ArrayList<String> myCompanyInfo = new ArrayList<String>();
+        Call<ArrayList<RecieveCompanyInfo>> call = retrofitInterface.getCompanies(map);
+        call.enqueue(new Callback<ArrayList<RecieveCompanyInfo>>() {
+            @Override
+            public void onResponse(Call<ArrayList<RecieveCompanyInfo>> call, Response<ArrayList<RecieveCompanyInfo>> response) {
+                final ArrayList<RecieveCompanyInfo> companyInfos = response.body();
+
+
+                int size = companyInfos.size();
+                for (int k = 0; k < size; k++) {
+                    myCompanyInfo.add(companyInfos.get(k).getName());
+                }
+
+                ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, myCompanyInfo);
+                spinner.setAdapter(arrayAdapter);
+
+            }
+
+
+            @Override
+            public void onFailure(Call<ArrayList<RecieveCompanyInfo>> call, Throwable t) {
+                Toast.makeText(CollegeActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        return myCompanyInfo;
+    }
+
+    public ArrayList<String> SetSpinnnerBranch(final Spinner spinner){
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        final String token = sharedPreferences.getString("Token", "");
+        final HashMap<String, String> map = new HashMap<String, String>();
+        final ArrayList<String> forSpinner = new ArrayList<String>();
+        map.put("token", token);
+        map.put("isUnique", "no");
+        Call<BranchInfo> call = retrofitInterface.getBranchInfo(map);
+        call.enqueue(new Callback<BranchInfo>() {
+            @Override
+            public void onResponse(Call<BranchInfo> call, Response<BranchInfo> response) {
+                if (response.code() == 200) {
+
+                    BranchInfo branchInfo = response.body();
+                    final ArrayList<BranchAttributes> branchAttributes = branchInfo.getFinals();
+
+
+                    for (int k = 0; k < branchAttributes.size(); k++) {
+                        forSpinner.add(branchAttributes.get(k).name);
+                        Log.i("Name", branchAttributes.get(k).name);
+                    }
+
+
+                    ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, forSpinner);
+                    spinner.setAdapter(arrayAdapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<BranchInfo> call, Throwable t) {
+                Toast.makeText(CollegeActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        return forSpinner;
+
+    }
+
+
+
 }
+
+
+

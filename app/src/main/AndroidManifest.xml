@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ViewActivity"></activity>
+        <activity android:name=".DisplayBranchClg"></activity>
+        <activity android:name=".ViewActivity" />
         <activity android:name=".CollegeActivity" />
         <activity android:name=".AdminActivity" />
         <activity android:name=".MainActivity">
@@ -20,6 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />

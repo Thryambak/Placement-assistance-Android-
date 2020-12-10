@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/collegeRowLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    >
+
+    <TextView
+        android:id="@+id/BranchName1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="THIS IS BRanchNAME"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18dp" />
+
+
+    <TextView
+        android:id="@+id/Circuit1"
+        android:layout_width="169dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/BranchName1"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="Circuit"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/Avgpkg1"
+        android:layout_width="169dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/BranchName1"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toRightOf="@+id/Circuit1"
+        android:text="AvgPkg"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="18dp" />
+
+</RelativeLayout>

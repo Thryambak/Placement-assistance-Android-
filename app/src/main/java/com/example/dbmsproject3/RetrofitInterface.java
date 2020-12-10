@@ -8,6 +8,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+import retrofit2.http.Url;
 
 public interface RetrofitInterface {
 
@@ -45,6 +46,12 @@ Call<BranchInfo> getBranchInfo(@Body HashMap<String,String> map);
 
     @GET("/colleges")
     Call<ArrayList<CollegeInfo>> getColleges();
+
+    @GET()
+    Call<CollegeInfo> getClgInfo(@Url String url);
+
+    @POST("/add/visits")
+    Call<Void> addVisit(@Body HashMap<String,String> map);
 
 
 

@@ -2,6 +2,10 @@ package com.example.dbmsproject3;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.json.JSONArray;
+
+import java.util.ArrayList;
+
 public class CollegeInfo {
 
     private String name;
@@ -12,6 +16,12 @@ public class CollegeInfo {
     private String contact;
     private String password;
     private String token;
+    //private ArrayList<CollegeDisplayDetails> branches;
+    private CollegeDisplayDetails[] branches;
+
+    public CollegeDisplayDetails[] getBranches() {
+        return branches;
+    }
 
     public String getName() {
         return name;

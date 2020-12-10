@@ -8,6 +8,13 @@
     android:layout_height="match_parent"
     tools:context=".ViewActivity">
 
+    <AutoCompleteTextView
+        android:id="@+id/search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:hint="Enter  College to Search" />
+
     <ListView
         android:id="@+id/List"
         android:layout_width="match_parent"
