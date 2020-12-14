@@ -48,7 +48,7 @@ CollegeInfo collegeInfo;
 
 
 
-        holder.avgPkg.setText("Average package: "+Integer.toString(collegeInfo.getBranches()[position].getAveragePackage())+"₹");
+        holder.avgPkg.setText("Average package: "+Float.toString(collegeInfo.getBranches()[position].getAveragePackage())+"₹");
         if(position%2==0){
             holder.relativeLayout.setBackgroundColor(Color.parseColor("#E3C7C7"));
         }
@@ -62,7 +62,7 @@ CollegeInfo collegeInfo;
             holder.recyclerView.setVisibility(View.GONE);
         }
         else{
-            holder.recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            holder.recyclerView.setLayoutManager(new LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false));
             RinRAdapter rAdapter = new RinRAdapter(context,collegeInfo.getBranches()[position].getPlaced());
             holder.recyclerView.setAdapter(rAdapter);
         }

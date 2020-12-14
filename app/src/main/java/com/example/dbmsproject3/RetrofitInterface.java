@@ -31,7 +31,7 @@ public interface RetrofitInterface {
     @POST("/add/branch")
     Call<Void> sendBranchInfo (@Body HashMap<String,String> map);
     @POST("/branches/data")
-Call<BranchInfo> getBranchInfo(@Body HashMap<String,String> map);
+  Call<BranchInfo> getBranchInfo(@Body HashMap<String,String> map);
 
     @POST("/companies")
     Call<ArrayList<RecieveCompanyInfo>> getCompanies(@Body HashMap<String,String> map);

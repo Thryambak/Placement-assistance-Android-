@@ -11,13 +11,13 @@ public class CollegeDisplayDetails {
         return placed;
     }
 
-    public int getAveragePackage() {
+    public float getAveragePackage() {
         return averagePackage;
     }
 
     private Placed[] placed;
 //    private int totalPlaced;
-    private int averagePackage;
+    private float averagePackage;
 
     private BranchAttributes branchid;
 

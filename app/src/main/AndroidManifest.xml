@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DisplayBranchClg"></activity>
+        <activity android:name=".ViewQuestionActivity"></activity>
+        <activity android:name=".DisplayBranchClg" />
         <activity android:name=".ViewActivity" />
         <activity android:name=".CollegeActivity" />
         <activity android:name=".AdminActivity" />

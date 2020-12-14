@@ -489,7 +489,7 @@ public class CollegeActivity extends AppCompatActivity {
         return myCompanyInfo;
     }
 
-    public ArrayList<String> SetSpinnnerBranch(final Spinner spinner){
+    public  ArrayList<String> SetSpinnnerBranch(final Spinner spinner){
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         final String token = sharedPreferences.getString("Token", "");
