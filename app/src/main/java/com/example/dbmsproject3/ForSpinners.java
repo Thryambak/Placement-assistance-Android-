@@ -34,13 +34,13 @@ public class ForSpinners {
 
     public ArrayList<String> SetSpinnnerBranch(final Spinner spinner, final Context context){
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context.getApplicationContext());
-        final String token = sharedPreferences.getString("Token", "");
+
+        final String token = "";
         final HashMap<String, String> map = new HashMap<String, String>();
         final ArrayList<String> forSpinner = new ArrayList<String>();
         map.put("token", token);
         map.put("isUnique", "no");
-        Call<BranchInfo> call = retrofitInterface.getBranchInfo(map);
+        Call<BranchInfo> call = retrofitInterface.getBranchInfoForView(map);
         call.enqueue(new Callback<BranchInfo>() {
             @Override
             public void onResponse(Call<BranchInfo> call, Response<BranchInfo> response) {
@@ -49,7 +49,7 @@ public class ForSpinners {
                     BranchInfo branchInfo = response.body();
                     final ArrayList<BranchAttributes> branchAttributes = branchInfo.getFinals();
 
-
+                    forSpinner.add("ALL");
                     for (int k = 0; k < branchAttributes.size(); k++) {
                         forSpinner.add(branchAttributes.get(k).name);
                         Log.i("Name", branchAttributes.get(k).name);
@@ -81,6 +81,7 @@ public class ForSpinners {
 
 
                 int size = companyInfos.size();
+                myCompanyInfo.add("ALL");
                 for (int k = 0; k < size; k++) {
                     myCompanyInfo.add(companyInfos.get(k).getName());
                 }
@@ -108,7 +109,7 @@ public class ForSpinners {
             public void onResponse(Call<ArrayList<CollegeInfo>> call, Response<ArrayList<CollegeInfo>> response) {
                 if(response.code()==200){
                     ArrayList<CollegeInfo> myClgArray  = response.body();
-
+                    collegeNames.add("ALL");
                     for(CollegeInfo collegeInfo:myClgArray){
                         collegeNames.add(collegeInfo.getName());
                     }

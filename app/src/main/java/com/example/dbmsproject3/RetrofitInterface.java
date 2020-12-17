@@ -2,6 +2,7 @@ package com.example.dbmsproject3;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -30,6 +31,11 @@ public interface RetrofitInterface {
 
     @POST("/add/branch")
     Call<Void> sendBranchInfo (@Body HashMap<String,String> map);
+
+
+    @POST("/branches/data/forView")
+    Call<BranchInfo> getBranchInfoForView(@Body HashMap<String,String> map);
+
     @POST("/branches/data")
   Call<BranchInfo> getBranchInfo(@Body HashMap<String,String> map);
 
@@ -42,7 +48,7 @@ public interface RetrofitInterface {
     Call<Void>  addQuestion(@Body HashMap<String,String> map);
 
     @GET("/questions")
-    Call<Void> viewQuetions(@Query("college") String college ,@Query("branch") String branch,@Query("company") String company);
+    Call<Questions[]>viewQuetions(@Query("college") String college , @Query("branch") String branch, @Query("company") String company);
 
     @GET("/colleges")
     Call<ArrayList<CollegeInfo>> getColleges();

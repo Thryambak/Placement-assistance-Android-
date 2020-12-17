@@ -7,19 +7,24 @@
     tools:context=".AdminActivity">
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add new College"
         android:id="@+id/addCollege"
-        android:layout_centerInParent="true"
-        />
-    <Button
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Add new Branch"
+        android:layout_centerInParent="true"
+        android:background="@drawable/round_button"
+        android:text="Add new College" />
+
+    <Button
         android:id="@+id/addBranch"
-        android:layout_centerHorizontal="true"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/addCollege"
-        android:layout_margin="8dp"/>
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/round_button"
+        android:text="Add new Branch" />
 
 </RelativeLayout>

@@ -51,9 +51,7 @@ public class ViewActivity extends AppCompatActivity {
                     break;
             case 1: ViewQuestions();
                     break;
-//            case 2: ViewCompanys();
-//                    break;
-//            case 3: ViewBranches();
+//
 
         }
 
@@ -146,5 +144,6 @@ public class ViewActivity extends AppCompatActivity {
     protected void ViewQuestions(){
         Intent intent = new Intent(getApplicationContext(),ViewQuestionActivity.class);
         startActivity(intent);
+        finish();
     }
 }

@@ -18,30 +18,31 @@
 
     <Spinner
         android:id="@+id/spinnerCollege"
-        android:layout_width="275dp"
+        android:layout_width="215dp"
         android:layout_height="50dp"
         android:layout_below="@+id/spinnerCompany"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="55dp"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCompany" />
 
     <Spinner
         android:id="@+id/spinnerBranch"
-        android:layout_width="275dp"
+        android:layout_width="215dp"
         android:layout_height="50dp"
         android:layout_below="@+id/spinnerCollege"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="55dp"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinnerCollege" />
 
     <Spinner
         android:id="@+id/spinnerCompany"
-        android:layout_width="275dp"
+        android:layout_width="215dp"
         android:layout_height="50dp"
         android:layout_margin="8dp"
         android:layout_marginTop="8dp"
+        android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -51,7 +52,11 @@
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="113dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
         android:text="College:"
+        android:textAlignment="gravity"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerCollege"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,7 +66,11 @@
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
         android:text="Company:"
+        android:textAlignment="gravity"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerCompany"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,7 +80,11 @@
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="216dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
         android:text="Branch:"
+        android:textAlignment="gravity"
+        app:layout_constraintEnd_toStartOf="@+id/spinnerBranch"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

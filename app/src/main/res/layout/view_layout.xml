@@ -1,39 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+   >
+
     <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="View Colleges"
         android:id="@+id/viewColleges"
-        />
-
-    <Button
         android:layout_width="match_parent"
+        android:background="@drawable/round_button"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="View all Questions"
+        android:text="View Colleges" />
+
+    <Button
         android:id="@+id/viewQuestion"
-        />
-
-    <Button
         android:layout_width="match_parent"
+        android:background="@drawable/round_button"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:text="View Companies"
-        android:id="@+id/viewCompany"
-        />
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:text="View Branches"
-        android:id="@+id/viewBranches"
-        />
-
+        android:text="View all Questions" />
 
 
 </LinearLayout>

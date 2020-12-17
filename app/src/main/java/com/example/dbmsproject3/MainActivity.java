@@ -335,24 +335,7 @@ public void signout(View view)
 
             }
         });
-        view.findViewById(R.id.viewCompany).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),ViewActivity.class);
-                intent.putExtra("option",2);
-                startActivity(intent);
 
-            }
-        });
-        view.findViewById(R.id.viewBranches).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),ViewActivity.class);
-                intent.putExtra("option",3);
-                startActivity(intent);
-
-            }
-        });
 
 
 

@@ -38,6 +38,7 @@ public class CollegeActivity extends AppCompatActivity {
     boolean isCompanyNeeded = false;
    private int companySelected;
     private int branchSelected;
+    final ArrayList<String> myCompanyInfo = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -170,6 +171,7 @@ public class CollegeActivity extends AppCompatActivity {
 
 
     public void addQuestion() {
+        myCompanyInfo.clear();
 
         final View view = this.getLayoutInflater().inflate(R.layout.questions_add, null);
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -187,7 +189,7 @@ public class CollegeActivity extends AppCompatActivity {
             public void onResponse(Call<ArrayList<RecieveCompanyInfo>> call, Response<ArrayList<RecieveCompanyInfo>> response) {
                 final ArrayList<RecieveCompanyInfo> companyInfos = response.body();
 
-                final ArrayList<String> myCompanyInfo = new ArrayList<String>();
+
                 int size = 0;
                 if (companyInfos == null) {
                     size = 0;
@@ -203,7 +205,7 @@ public class CollegeActivity extends AppCompatActivity {
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> adapterView, View view2, int i, long l) {
-                        Toast.makeText(CollegeActivity.this, myCompanyInfo.get(i), Toast.LENGTH_SHORT).show();
+
                         ItemSelected = i;
                         EditText companyName = view.findViewById(R.id.companyName);
                         EditText companyTier = view.findViewById(R.id.companyTier);
@@ -213,8 +215,8 @@ public class CollegeActivity extends AppCompatActivity {
                             companyTier.setVisibility(View.VISIBLE);
                         } else {
                             isCompanyNeeded = false;
-                            companyName.setVisibility(View.INVISIBLE);
-                            companyTier.setVisibility(View.INVISIBLE);
+                            companyName.setVisibility(View.GONE);
+                            companyTier.setVisibility(View.GONE);
                         }
                     }
 
@@ -225,7 +227,7 @@ public class CollegeActivity extends AppCompatActivity {
                 });
 
                 createNewQuestion(view, myCompanyInfo.get(ItemSelected),alert);
-
+               // Toast.makeText(CollegeActivity.this, myCompanyInfo.get(ItemSelected), Toast.LENGTH_LONG).show();
 
             }
 
@@ -315,6 +317,7 @@ public class CollegeActivity extends AppCompatActivity {
     public void createNewQuestion(final View myView, final String companyName, final AlertDialog alertDialog) {
         final Spinner spinner = myView.findViewById(R.id.branch);
         Company=companyName;
+       // Toast.makeText(this, Company, Toast.LENGTH_LONG).show();
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         ;
@@ -381,6 +384,7 @@ public class CollegeActivity extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Company=myCompanyInfo.get(ItemSelected);
                 if (isCompanyNeeded) {
 
                     final HashMap<String, String> newmap = new HashMap<String, String>();
@@ -424,6 +428,7 @@ public class CollegeActivity extends AppCompatActivity {
                 final String branch = forSpinner.get(selected);
                 HashMap<String,String> questMap = new HashMap<String, String>();
                 questMap.put("branch",branch);
+               // Toast.makeText(CollegeActivity.this, Company, Toast.LENGTH_SHORT).show();
                 questMap.put("companyname",Company);
                 questMap.put("round",roundEdit.getText().toString());
                 questMap.put("topic",topicEdit.getText().toString());
@@ -436,7 +441,7 @@ public class CollegeActivity extends AppCompatActivity {
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if(response.code()==200)
                         {
-                            Toast.makeText(CollegeActivity.this, "Question added", Toast.LENGTH_SHORT).show();
+                           Toast.makeText(CollegeActivity.this, "Question added", Toast.LENGTH_SHORT).show();
                             alertDialog.dismiss();
                             
                         }

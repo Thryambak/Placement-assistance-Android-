@@ -2,27 +2,46 @@
 <LinearLayout
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         android:id="@+id/adminUsername"
-        android:hint="Enter Username"/>
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        android:drawableStart="@drawable/username"
+        android:drawablePadding="8dp"
+        android:drawableTint="#000000"
+
+        android:hint="Enter Username"
+        android:textColor="#000000"
+        android:textColorHint="#131313" />
+
+    <EditText
         android:id="@+id/passwordEdit"
-        android:hint="Enter password"
-        android:inputType="textPassword"/>
-    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:text="Log In"
+        android:layout_margin="8dp"
+        android:drawableStart="@drawable/password"
+        android:drawablePadding="8dp"
+        android:drawableTint="#000000"
+        android:hint="Enter password"
+
+        android:inputType="textPassword"
+        android:shadowColor="#000000"
+        android:textColor="#000000"
+        android:textColorHighlight="#000000"
+        android:textColorHint="#000000"
+        android:textColorLink="#070707" />
+
+    <Button
         android:id="@+id/login"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+
+        android:background="@drawable/round_button"
+        android:text="Log In" />
 
 </LinearLayout>
