@@ -3,55 +3,81 @@
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
-     <EditText
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:hint="College name"
-         android:id="@+id/collegeName"
-         android:layout_margin="10dp"
-         />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="College CET code"
-        android:id="@+id/collegeCetcode"
-        android:layout_margin="10dp"
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Degree"
-        android:id="@+id/Degree"
-        android:layout_margin="10dp"
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Enter Contact details"
-        android:id="@+id/collegeContact"
-        android:inputType="phone"
-        android:layout_margin="10dp"
-        />
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="College Location"
-        android:id="@+id/collegeLocation"
-        android:layout_margin="10dp"
 
-        />
     <EditText
+        android:id="@+id/collegeName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint=" Set  Default College Password"
-        android:id="@+id/collegePassword"
         android:layout_margin="10dp"
+        android:hint="College name"
+        android:drawableStart="@drawable/ic_college"
+        android:drawablePadding="8dp"
+        android:textColor="#0C0C0C"
+        android:textColorHint="#000000" />
+
+    <EditText
+        android:id="@+id/collegeCetcode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="College CET code"
+        android:drawableStart="@drawable/ic_code"
+        android:drawablePadding="8dp"
+        android:textColor="#040303"
+        android:textColorHint="#0E0E0E" />
+
+    <EditText
+        android:id="@+id/Degree"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:drawableStart="@drawable/ic_degree"
+        android:drawablePadding="8dp"
+        android:hint="Enter Degree"
+        android:textColor="#0C0C0C"
+        android:textColorHint="#070707" />
+
+    <EditText
+        android:id="@+id/collegeContact"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="Enter Contact details"
+        android:drawableStart="@drawable/ic_contact"
+        android:drawablePadding="8dp"
+        android:inputType="phone"
+        android:textColor="#070707"
+        android:textColorHint="#000000" />
+
+    <EditText
+        android:id="@+id/collegeLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint="College Location"
+        android:drawableStart="@drawable/ic_location"
+        android:drawablePadding="8dp"
+
+        android:textColor="#090909"
+        android:textColorHint="#000000" />
+
+    <EditText
+        android:id="@+id/collegePassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:hint=" Set Default College Password"
         android:inputType="textPassword"
-        />
+        android:drawableStart="@drawable/password"
+        android:drawablePadding="8dp"
+
+        android:textColor="#0C0C0C"
+        android:textColorHint="#020202" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
         android:layout_margin="10dp"
         android:text="Submit"
         android:id="@+id/submit"

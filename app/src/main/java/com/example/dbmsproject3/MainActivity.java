@@ -2,6 +2,7 @@ package com.example.dbmsproject3;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -11,21 +12,32 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.security.SecureRandom;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.HashMap;
+
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 
 public class MainActivity extends AppCompatActivity {
 
     private   Retrofit retrofit;
     private   RetrofitInterface retrofitInterface;
-    private   String BaseURL="http://10.0.2.2:3000";
+    private String BaseURLLocal = "http://10.0.2.2:3000";
+    private   String BaseURL="https://mvt-placement-assistance.herokuapp.com/";
     private Boolean isLogedin = false;
 
 
@@ -46,10 +58,10 @@ public void signout(View view)
     button.setVisibility(View.INVISIBLE);
     user.setVisibility(View.INVISIBLE);
     editor.commit();
-    button1.setText("Login as Admin");
+
     isLogedin=false;
     Toast.makeText(this,"Signed out successfully", Toast.LENGTH_SHORT).show();
-    button2.setText("College login");
+
 
 }
 
@@ -84,15 +96,18 @@ public void signout(View view)
                     HashMap<String, String> map = new HashMap<String, String>();
                     map.put("username", username.getText().toString());
                     map.put("password", password.getText().toString());
-                    map.put("auth","admin");
+                   // map.put("auth","admin");
+
                     Call<RecieveInfo> call = retrofitInterface.requestAdminLogin(map);
+                    Log.i("DEBUG","2222");
                     call.enqueue(new Callback<RecieveInfo>() {
                         @Override
                         public void onResponse(Call<RecieveInfo> call, Response<RecieveInfo> response) {
+                            Log.i("CODE",Integer.toString(response.code()));
                             if (response.code() == 200) {
 
 
-                                //Toast.makeText(MainActivity.this, "Admin Login success", Toast.LENGTH_SHORT).show();
+                               Toast.makeText(MainActivity.this, "Admin Login success", Toast.LENGTH_SHORT).show();
                                 SharedPreferences sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(getApplicationContext());;
                                 final SharedPreferences.Editor editor = sharedPreferences.edit();
                                 editor.putString("Activeuser", "Admin");
@@ -164,19 +179,13 @@ public void signout(View view)
             button.setVisibility(View.VISIBLE);
 
 
-            if(currentUser.equals("Admin"))
-            {
-                button1.setText("Continue As Admin");
-            }
-            else
-            {
-                button2.setText("Continue as "+ currentUser);
-            }
+
 
         }
 
         retrofit = new Retrofit.Builder()
                 .baseUrl(BaseURL)
+                .client(getUnsafeOkHttpClient())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         retrofitInterface = retrofit.create(RetrofitInterface.class);
@@ -278,7 +287,7 @@ public void signout(View view)
                                         editor.putString("Activeuser", "");
                                         editor.putString("token", "");
                                         editor.commit();
-                                        button.setText("College Login");
+
                                         button6.setVisibility(View.INVISIBLE);
                                         user.setVisibility(View.INVISIBLE);
                                     }
@@ -338,6 +347,50 @@ public void signout(View view)
 
 
 
+
+    }
+
+
+    public static OkHttpClient getUnsafeOkHttpClient() {
+
+        try {
+            // Create a trust manager that does not validate certificate chains
+            final TrustManager[] trustAllCerts = new TrustManager[] { new X509TrustManager() {
+                @Override
+                public void checkClientTrusted(
+                        X509Certificate[] chain,
+                        String authType) throws CertificateException {
+                }
+
+                @Override
+                public void checkServerTrusted(
+                        X509Certificate[] chain,
+                        String authType) throws CertificateException {
+                }
+
+                @Override
+                public X509Certificate[] getAcceptedIssuers() {
+                    return new X509Certificate[0];
+                }
+            } };
+
+            // Install the all-trusting trust manager
+            final SSLContext sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(null, trustAllCerts,
+                    new SecureRandom());
+            // Create an ssl socket factory with our all-trusting manager
+            final SSLSocketFactory sslSocketFactory = sslContext
+                    .getSocketFactory();
+
+            OkHttpClient okHttpClient = new OkHttpClient();
+            okHttpClient = okHttpClient.newBuilder()
+                    .sslSocketFactory(sslSocketFactory)
+                    .hostnameVerifier(org.apache.http.conn.ssl.SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER).build();
+
+            return okHttpClient;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

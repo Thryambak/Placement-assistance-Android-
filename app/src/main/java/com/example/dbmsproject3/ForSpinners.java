@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ForSpinners {
         private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
-    private String BaseURL = "http://10.0.2.2:3000";
+    private String BaseURL = "https://mvt-placement-assistance.herokuapp.com/";
 
    public ForSpinners(){
        retrofit = new Retrofit.Builder()

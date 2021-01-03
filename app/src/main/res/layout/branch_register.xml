@@ -5,26 +5,31 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="Enter Branch name"
         android:id="@+id/branchEdit"
-        />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:drawableStart="@drawable/ic_degree"
+        android:drawablePadding="8dp"
+        android:hint="Enter Branch name"
+        android:textColor="#050505"
+        android:textColorHint="#000000" />
+
     <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         android:id="@+id/isCircuit"
-        android:spinnerMode="dropdown"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="8dp"
+        android:background="@drawable/for_spinners"
         android:entries="@array/Enter_Circuit"
-        />
+        android:spinnerMode="dropdown" />
+
     <Button
+        android:id="@+id/submitBranch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit"
         android:layout_margin="8dp"
-        android:id="@+id/submitBranch"
-        />
+        android:background="@drawable/round_button"
+        android:text="@string/submit" />
 
 </LinearLayout>

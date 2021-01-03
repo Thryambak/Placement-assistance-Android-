@@ -32,7 +32,7 @@ public class CollegeActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private RetrofitInterface retrofitInterface;
     private int selected = 0;
-    private String BaseURL = "http://10.0.2.2:3000";
+    private String BaseURL = "https://mvt-placement-assistance.herokuapp.com/";
     int ItemSelected = 0;
     private  String Company="";
     boolean isCompanyNeeded = false;
@@ -245,7 +245,7 @@ public class CollegeActivity extends AppCompatActivity {
         View myView= getLayoutInflater().inflate(R.layout.addvisit,null);
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setView(myView);
-        AlertDialog alert = builder.create();
+        final AlertDialog alert = builder.create();
         alert.show();
         final Button submit= myView.findViewById(R.id.buttonAddVisit);
         final EditText year= myView.findViewById(R.id.year);
@@ -299,7 +299,9 @@ public class CollegeActivity extends AppCompatActivity {
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if(response.code()==200){
                             Toast.makeText(CollegeActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                            alert.dismiss();
                         }
+
                         else if(response.code()==400)Toast.makeText(CollegeActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                     }
 

@@ -30,7 +30,7 @@ CollegeInfo collegeInfo;
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.collegerow,parent,false);
-        Toast.makeText(parent.getContext(), "Here", Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(parent.getContext(), "Here", Toast.LENGTH_SHORT).show();
         return new myViewHolder(view);
 
 

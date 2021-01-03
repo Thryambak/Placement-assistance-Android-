@@ -30,7 +30,7 @@ public class ViewActivity extends AppCompatActivity {
 
     private Retrofit retrofit;
     private   RetrofitInterface retrofitInterface;
-    private   String BaseURL="http://10.0.2.2:3000";
+    private   String BaseURL="https://mvt-placement-assistance.herokuapp.com/";
     ListView listView;
 
     @Override

@@ -4,86 +4,115 @@
     android:layout_height="match_parent">
 
     <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         android:id="@+id/Company"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:autofillHints="Company name"
-        android:layout_centerHorizontal="true"/>
-
-
+        android:background="@drawable/for_spinners" />
 
 
     <EditText
+        android:id="@+id/companyName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         android:layout_below="@+id/Company"
-
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
         android:hint="Enter Company name"
-        android:gravity="center"
-        android:visibility="invisible"
-        android:id="@+id/companyName"/>
-
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:visibility="visible" />
 
 
     <EditText
+        android:id="@+id/companyTier"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:gravity="center"
-
         android:layout_below="@+id/companyName"
-        android:hint="Enter Company Tier                                                                "
-        android:visibility="invisible"
-
-
-        android:id="@+id/companyTier"/>
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:hint="Enter Company Tier"
+        android:textColor="#000000"
+        android:textColorHint="#000000"
+        android:visibility="gone" />
 
     <EditText
+        android:id="@+id/round"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
         android:layout_below="@+id/companyTier"
-        android:hint="Round"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
-        android:id="@+id/round"/>
+        android:hint="Round"
+        android:textColor="#0B0B0B"
+        android:textColorHint="#101010"
+        android:visibility="gone"/>
 
 
     <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/branch"
-        android:layout_margin="8dp"
-        android:layout_below="@+id/round"
-        android:autofillHints="Branch"
-        />
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_below="@+id/branch"
-        android:id="@+id/topic"
-        android:gravity="center"
-        android:hint="Topic"/>
+        android:layout_below="@+id/round"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:autofillHints="Branch"
+        android:background="@drawable/for_spinners" />
 
     <EditText
+        android:id="@+id/topic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:layout_below="@+id/topic"
-        android:id="@+id/descreption"
+        android:layout_below="@+id/branch"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:gravity="center"
-        android:hint="Question"/>
+        android:hint="Topic"
+        android:textColor="#050505"
+        android:textColorHint="#0E0E0E" />
+
+    <EditText
+        android:id="@+id/descreption"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/topic"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:hint="Question"
+        android:textColorHint="#050505" />
 
     <Button
         android:id="@+id/questionSubmit"
         android:layout_width="174dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/descreption"
-      android:layout_margin="8dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/round_button"
         android:text="Submit" />
 
 

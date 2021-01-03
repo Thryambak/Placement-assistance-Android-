@@ -28,7 +28,7 @@ public class AdminActivity extends AppCompatActivity {
     private Retrofit retrofit;
     private String token="";
     private RetrofitInterface retrofitInterface;
-    private String url = "http://10.0.2.2:3000";
+    private String url = "https://mvt-placement-assistance.herokuapp.com/";
 
 
     @Override

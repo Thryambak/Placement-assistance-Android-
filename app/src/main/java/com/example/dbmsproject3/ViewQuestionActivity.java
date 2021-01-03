@@ -32,7 +32,7 @@ public class ViewQuestionActivity extends AppCompatActivity {
     public static Questions[] myQuestions;
 
     private RetrofitInterface retrofitInterface;
-    private String BaseURL = "http://10.0.2.2:3000";
+    private String BaseURL = "https://mvt-placement-assistance.herokuapp.com/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,7 +149,7 @@ public class ViewQuestionActivity extends AppCompatActivity {
                                     for(Questions q : questions){
                                         arrayList.add(q.getTopic());
                                     }
-                                    ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,arrayList);
+                                    ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),R.layout.textfield,arrayList);
                                     myList.setAdapter(arrayAdapter);
 
 
@@ -182,7 +182,7 @@ public class ViewQuestionActivity extends AppCompatActivity {
                 for(Questions q : questions){
                     arrayList.add(q.getTopic());
                 }
-                ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_spinner_dropdown_item,arrayList);
+                ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),R.layout.textfield,arrayList);
                 myList.setAdapter(arrayAdapter);
 
 

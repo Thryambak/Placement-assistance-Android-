@@ -4,7 +4,7 @@
     android:id="@+id/collegeRowLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
+
     android:layout_marginBottom="8dp">
 
     <TextView
@@ -15,10 +15,11 @@
 
         android:layout_below="@+id/parentYear"
         android:layout_alignParentStart="true"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/Circuit1"
+        android:background="@drawable/text_black"
         android:text="No of students placed"
         android:textAlignment="center"
         android:textColor="#000000"
@@ -30,10 +31,11 @@
         android:layout_height="50dp"
 
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:text="THIS IS BRanchNAME"
+        android:background="@drawable/text_black"
+        android:gravity="center"
+        android:text="This is Branch Name"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="18dp" />
@@ -47,6 +49,8 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/text_black"
+        android:gravity="center"
         android:text="Circuit"
         android:textAlignment="center"
         android:textColor="#000000"
@@ -59,8 +63,9 @@
         android:layout_below="@+id/BranchName1"
         android:layout_alignParentStart="true"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="80dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/text_black"
         android:gravity="center"
         android:text="Years"
         android:textAlignment="center"
@@ -80,6 +85,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:layout_toRightOf="@+id/Circuit1"
+        android:background="@drawable/text_black"
         android:text="AvgPkg"
         android:textAlignment="center"
         android:textColor="#000000"
@@ -88,10 +94,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/RinR"
         android:layout_width="217dp"
-        android:layout_height="110dp"
+        android:layout_height="120dp"
         android:layout_alignTop="@+id/Avgpkg1"
         android:layout_marginStart="194dp"
-        android:layout_marginTop="104dp"
+        android:layout_marginTop="70dp"
         android:nestedScrollingEnabled="false" />
 
 </RelativeLayout>
