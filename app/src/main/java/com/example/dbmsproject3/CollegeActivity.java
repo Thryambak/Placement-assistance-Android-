@@ -99,7 +99,7 @@ public class CollegeActivity extends AppCompatActivity {
                     BranchInfo branchInfo = response.body();
                     final ArrayList<BranchAttributes> branchAttributes = branchInfo.getFinals();
                     final ArrayList<String> forSpinner = new ArrayList<String>();
-                    Toast.makeText(CollegeActivity.this, "Branch Sizes" + branchAttributes.size(), Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(CollegeActivity.this, "Branch Sizes" + branchAttributes.size(), Toast.LENGTH_SHORT).show();
                     for (int k = 0; k < branchAttributes.size(); k++) {
                         forSpinner.add(branchAttributes.get(k).name);
                         Log.i("Name", branchAttributes.get(k).name);

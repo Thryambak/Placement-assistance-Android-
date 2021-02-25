@@ -264,7 +264,7 @@ public void signout(View view)
                             if (response.code() == 200) {
 
                                    final Button button = findViewById(R.id.collegeLogin);
-                                    button.setText("Continue as "+username.getText().toString());
+                                   // button.setText("Continue as "+username.getText().toString());
                                 SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
                                 ;
                                 final SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -273,7 +273,7 @@ public void signout(View view)
                                 editor.putString("Activeuser", username.getText().toString());
                                 editor.commit();
                                 final TextView user = findViewById(R.id.user);
-                                user.setText("Signed in as: " + username.getText().toString());
+                             //   user.setText("Signed in as: " + username.getText().toString());
                                 user.setVisibility(View.VISIBLE);
                                 isLogedin = true;
                                 final Button button6 = findViewById(R.id.signout);
